@@ -1,5 +1,5 @@
 Build:
-docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) --tag alireaza/firefox .
+docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) --tag alireaza/firefox:$(date -u +%Y%m%d) --tag alireaza/firefox .
 
 Run:
 docker run \
