@@ -1,8 +1,14 @@
-Build:
-docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) --tag alireaza/firefox:$(date -u +%Y%m%d) --tag alireaza/firefox .
+# Firefox
 
-Run:
-docker run \
+## Build
+Via GitHub repository
+```bash
+$ docker build --tag alireaza/firefox:$(date -u +%Y%m%d) --tag alireaza/firefox:latest https://github.com/alireaza/firefox.git
+```
+
+## Run
+```bash
+$ docker run \
 --interactive \
 --tty \
 --rm \
@@ -18,3 +24,5 @@ docker run \
 --mount="type=bind,source=$(pwd)/udocker,target=/home/udocker" \
 --name="firefox" \
 alireaza/firefox
+```
+

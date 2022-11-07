@@ -4,7 +4,19 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
-firefox \
+software-properties-common gnupg2 \
+&& apt-get update \
+&& apt-get upgrade -y \
+&& apt-get remove -fy \
+&& apt-get autoclean -y \
+&& apt-get autoremove -y \
+&& rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
+
+RUN add-apt-repository ppa:mozillateam/ppa
+
+RUN apt-get update \
+&& apt-get install -y --no-install-recommends \
+firefox -t 'o=LP-PPA-mozillateam' \
 pulseaudio \
 tzdata \
 && apt-get update \
